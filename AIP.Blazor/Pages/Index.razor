@@ -1,9 +1,24 @@
 ﻿@page "/"
+@using AIP.UseCases.Students.Interfaces
+@using AIP.Entities
 
-<PageTitle>Index</PageTitle>
+@inject IViewStudentsByNameUseCase ViewStudentsByNameUseCase
 
-<h1>Hello, world!</h1>
+<PageTitle>Automatizace inkasních plateb</PageTitle>
 
-Welcome to your new app.
+<ul>
+    @foreach (var student in _students)
+    {
+        <li>@student.LastName @student.FirstName</li>
+    }
+</ul>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code
+{
+    private List<Student> _students = new List<Student>();
+    protected override async Task OnInitializedAsync()
+    {
+        _students = (await ViewStudentsByNameUseCase.ExecuteAsync("á")).ToList();
+    }
+}

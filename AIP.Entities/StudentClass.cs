@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AIP.Entities
 {
-    internal class StudentClass
+    public class StudentClass
     {
         public int IdZak { get; set; }
         public DateTime DateSince { get; set; }

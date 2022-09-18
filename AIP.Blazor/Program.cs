@@ -1,4 +1,8 @@
 using AIP.Blazor.Data;
+using AIP.Plugins.InMemory;
+using AIP.UseCases.PluginInterfaces;
+using AIP.UseCases.Students;
+using AIP.UseCases.Students.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -8,6 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddSingleton<IStudentRepository, StudentRepository>();
+builder.Services.AddTransient<IViewStudentsByNameUseCase, ViewStudentsByNameUseCase>();
+builder.Services.AddTransient<IAddStudentUseCase, AddStudentUseCase>();
 
 var app = builder.Build();
 

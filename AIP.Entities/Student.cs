@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace AIP.Entities
 {
-    internal class Student
+    public class Student
     {
         public int Id { get; set; }
         public bool Active { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string Account { get; set; }
+        public string FirstName { get; set; } = String.Empty;
+        public string LastName { get; set; } = String.Empty;
+        public DateTime BirthDate { get; set; } = DateTime.Today;
+        public string Account { get; set; } = String.Empty;
+        public string Bank { get; set; } = String.Empty;
         public bool CollectionPayment { get; set; }
-        public string Note { get; set; }
+        public string Note { get; set; } = String.Empty;
     }
 }

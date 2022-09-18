@@ -1,0 +1,21 @@
+﻿@using AIP.Entities
+
+@if (Students != null && Students.Count > 0)
+{
+    foreach (var student in Students)
+    {
+        <tr>
+            <td>@student.LastName</td>
+            <td>@student.FirstName</td>
+            <td>@student.BirthDate.ToString("dd.MM.yyyy")</td>
+            <td>
+                <button type="button" class="btn btn-light">Uprav</button>
+            </td>
+        </tr>
+    }
+}
+
+@code {
+    [Parameter]
+    public List<Student> Students { get; set; } = new List<Student>();
+}

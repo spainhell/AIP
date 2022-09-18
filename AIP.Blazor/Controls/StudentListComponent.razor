@@ -1,0 +1,30 @@
+﻿@using AIP.Entities
+@using AIP.UseCases.Students.Interfaces
+
+@inject IViewStudentsByNameUseCase ViewStudentsByNameUseCase
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Příjmení</th>
+            <th>Jméno</th>
+            <th>Dat. nar.</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <StudentListItemComponent Students="_listStudents"></StudentListItemComponent>
+    </tbody>
+</table>
+
+@code {
+    private List<Student> _listStudents = new List<Student>();
+
+    [Parameter]
+    public string SearchTerm { get; set; } = String.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _listStudents = (await ViewStudentsByNameUseCase.ExecuteAsync(SearchTerm)).ToList();
+    }
+}

@@ -1,0 +1,26 @@
+﻿@page "/students"
+
+@inject NavigationManager NavigationManager
+
+<h3>Seznam dětí</h3>
+<br/>
+<SearchStudentComponent OnSearchStudent="OnStudentSearch"></SearchStudentComponent>
+<br/>
+<StudentListComponent SearchTerm="@_searchTerm"></StudentListComponent>
+<br/>
+<button type="button" class="btn btn-primary" @onclick="AddStudent">Přidat dítě</button>
+
+@code {
+    private string _searchTerm = string.Empty;
+
+    private void OnStudentSearch(string searchTerm)
+    {
+        _searchTerm = searchTerm;
+    }
+
+    private void AddStudent()
+    {
+        NavigationManager.NavigateTo("addStudent");
+    }
+
+}

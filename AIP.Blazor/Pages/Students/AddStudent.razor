@@ -1,0 +1,28 @@
+﻿@page "/addStudent"
+@using AIP.Entities
+
+<h3>Přidání dítěte</h3>
+<br/>
+<EditForm Model="_newStudent" OnSubmit="() => {}">
+    <div class="form-group">
+
+        <label for="LastName">Příjmení</label>
+        <InputText id="LastName" @bind-Value="_newStudent.LastName" class="form-control"></InputText>
+
+        <label for="FirstName">Jméno</label>
+        <InputText id="FirstName" @bind-Value="_newStudent.FirstName" class="form-control"></InputText>
+
+        
+        
+        <InputCheckbox @bind-Value="_newStudent.Active"></InputCheckbox>
+        <InputCheckbox @bind-Value="_newStudent.CollectionPayment"></InputCheckbox>
+
+    </div>
+
+</EditForm>
+
+@_newStudent
+
+@code {
+    private Student _newStudent = new Student();
+}

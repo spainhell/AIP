@@ -1,0 +1,22 @@
+﻿<div class="input-group">
+    <input type="text" class="form-control" placeholder="Vyhledat dítě"
+           @bind-value="_studentToSearch" />
+    <button type="button" class="btn-success input-group-text"
+            @onclick="OnSearch">
+        Vyhledat
+    </button>
+</div>
+<br/>
+
+
+@code {
+    private string _studentToSearch = String.Empty;
+    
+    [Parameter]
+    public EventCallback<string> OnSearchStudent { get; set; }
+
+    private void OnSearch()
+    {
+        OnSearchStudent.InvokeAsync(_studentToSearch);
+    }
+}
